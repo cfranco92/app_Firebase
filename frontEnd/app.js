@@ -10,7 +10,7 @@ $('#login').click(function(){
                   console.log(result.user);
                   guardaDatos(result.user);
                   $('#login').hide(); // ESCONDEMOS HIDE
-                  $('#root').append("<img  src='" + result.user.photoURL + "' />"); // AGREGAMOS HTML A UNA ETIQUETA
+                  $('#root').append("<img width='100' src='" + result.user.photoURL + "' />"); // AGREGAMOS HTML A UNA ETIQUETA
             });
 
 });
@@ -24,8 +24,7 @@ function guardaDatos(user){
     foto: user.photoURL
   }
   firebase.database().ref("usuarios/" + user.uid)
-    .set(usuario)
-    // .push(usuario);
+  .set(usuario)
 }
 
 // ESCRIBIR EN LA BASE DE DATOS
@@ -43,5 +42,5 @@ $('#guardar').click(function(){
 firebase.database().ref("usuarios")
   .on("child_added", function(s){ // SI SE AGREGA UNA NUEVA RAMA A USUARIOS
     var user = s.val();
-    $('#root').append("<img  src='" + user.foto + "' />"); // AGREGAMOS HTML A UNA ETIQUETA    
+    $('#root').append("<img width='100' src='" + user.foto + "' />"); // AGREGAMOS HTML A UNA ETIQUETA
   })
